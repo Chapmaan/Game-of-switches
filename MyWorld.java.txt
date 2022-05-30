@@ -24,5 +24,12 @@ public class MyWorld extends World
            int y = 30;
            addObject (new Switch(), x, y);
         }
+        int[] swap = new int[Count];
+        swap[0] = 0;
+        swap[1] = 0;
+        swap[2] = 0;
+        swap[3] = 0;
+        swap[4] = 0;
+        swap[5] = 0;
     }
 }

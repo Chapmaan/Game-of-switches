@@ -18,6 +18,13 @@ public class Switch extends Actor
     {
        
        System.out.println("OnOff:" + OnOff);
-
+       if (Greenfoot.mouseClicked(this))
+       {
+          OnOff = OnOff + 1;
+       }
+       if (OnOff > 1)
+       {
+          OnOff = 0;
+       }
     }    
 }
