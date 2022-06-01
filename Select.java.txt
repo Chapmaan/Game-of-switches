@@ -17,11 +17,11 @@ public class Select extends Actor
     public void act() 
     {
         deltaX = 0;
-        if (Greenfoot.isKeyDown("a"))
+        if (Greenfoot.isKeyDown("left"))
         {
            deltaX = deltaX - 65;
         }
-        if (Greenfoot.isKeyDown("d"))
+        if (Greenfoot.isKeyDown("right"))
         {
            deltaX = deltaX + 65;
         }
