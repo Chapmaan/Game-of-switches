@@ -8,7 +8,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld extends World
 {
+    //initial set values
+    //count of how many switches (yeah you will have to set this yourself)
     int Count = 6;
+    
+    // moves x a certain distance as specified for all squares
+    int C;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -17,19 +22,26 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); 
-       
+        addObject(new Select(), 185, 200);
         for (int i = 1; i <= Count; i++)
         {
-           int x = i * 60 - 30;
+           //centres the switches base on Count of switches
+           if (Count == 8)
+           {
+              C = -10;
+           }
+           else if (Count < 8 && Count > 4)
+           {
+              C = 55;
+           }
+           else if (Count < 5)
+           {
+              C = 120;
+           }
+           int x = i * 60 - C;
            int y = 30;
            addObject (new Switch(), x, y);
         }
-        int[] swap = new int[Count];
-        swap[0] = 0;
-        swap[1] = 0;
-        swap[2] = 0;
-        swap[3] = 0;
-        swap[4] = 0;
-        swap[5] = 0;
+        
     }
 }
