@@ -9,7 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Switch extends Actor
 {
     int OnOff = 0 + Greenfoot.getRandomNumber(2);
-    
+    int Score;
+
     //animation stuff
     GreenfootImage imageOff;
     GreenfootImage imageOn;
@@ -34,10 +35,12 @@ public class Switch extends Actor
        if (OnOff == 1)
        {
           setImage(imageOn);
+          Score = Score + 1;
        }
        if (OnOff != 1)
        {
           setImage(imageOff);
+          Score = 0;
        }
     }
     

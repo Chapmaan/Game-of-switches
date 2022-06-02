@@ -25,22 +25,8 @@ public class MyWorld extends World
         addObject(new Select(), 185, 200);
         for (int i = 1; i <= Count; i++)
         {
-           //centres the switches base on Count of switches
-           if (Count == 8)
-           {
-              C = -10;
-           }
-           else if (Count < 8 && Count > 4)
-           {
-              C = 55;
-           }
-           else if (Count < 5)
-           {
-              C = 120;
-           }
-           int x = i * 60 - C;
-           int y = 30;
-           addObject (new Switch(), x, y);
+           int x = i * 65 - 10;
+           addObject (new Switch(), x, 200);
         }
         
     }

@@ -9,7 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Select extends Actor
 {
     int deltaX;
-    
+    //also for the number of switches, but just for anti-cheat (Count = 3 to 8)
+    int Count = 6;
     /**
      * Act - do whatever the Select wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -26,16 +27,27 @@ public class Select extends Actor
            deltaX = deltaX + 65;
         }
         
-        
-        
+        restrictions();
+    }
+    
+    public void restrictions()
+    {
         setLocation(getX() + deltaX, getY() + 0);
-        if (getX() < 120)        
+        
+        for (int i = 1; i <= Count; i++)
         {
-           setLocation (120, 200);
+            int xMax = i * 65 + -10;
+            if (Count == i)
+            { 
+              if (getX() < 55)        
+              {
+                 setLocation (55, 200);
+              }
+              if (getX() > xMax)
+              {
+                 setLocation (xMax, 200);
+              }
+            }
         }
-        if (getX() > 500)
-        {
-           setLocation (445, 200);
-        }
-    }    
+    }   
 }
