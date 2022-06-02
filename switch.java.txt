@@ -1,5 +1,4 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
 /**
  * Write a description of class Switch here.
  * 
@@ -8,18 +7,20 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Switch extends Actor
 {
+    //decides if a switch is on or off
     int OnOff = 0 + Greenfoot.getRandomNumber(2);
+    
+    //tracks score
     int Score;
-
+    
     //animation stuff
     GreenfootImage imageOff;
     GreenfootImage imageOn;
-
     {
-       imageOff = new GreenfootImage("switch_copy.png");
-       imageOn = new GreenfootImage("switch_copy.png");
+       imageOff = new GreenfootImage("switch_Copy.png");
+       imageOn = new GreenfootImage("switch_Copy01.png");
     }
-
+    
     /**
      * Act - do whatever the Switch wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -28,25 +29,27 @@ public class Switch extends Actor
     {
        interact();
        animate();
+       rules();
     }    
-
+    
     public void animate()
     {
        if (OnOff == 1)
        {
+          //if on, set image to on
           setImage(imageOn);
-          Score = Score + 1;
        }
        if (OnOff != 1)
        {
+          //if off, set image to off
           setImage(imageOff);
-          Score = 0;
        }
     }
     
     public void interact()
     {
-       if (Greenfoot.isKeyDown("enter") && isTouching(Select.class))
+       //allows the player to switch the switch's OnOff state by pressing enter based on collision with the select.class object
+        if (Greenfoot.isKeyDown("enter") && isTouching(Select.class))
        {
           OnOff = OnOff + 1;
        }
@@ -55,8 +58,23 @@ public class Switch extends Actor
           OnOff = 0;
        }
     }
+    
+    public void rules()
+    {
+       //note to self, make all the lights flash on and off when the player turns all lights on
+       //possibly add a variable = to how many moves the player has made
+       
+        
+       //Score = OnOff 
+       if (OnOff == 0)
+       {
+          Score = 0;
+       }
+       else if (OnOff == 1)
+       {
+          Score = 1; 
+       }
+       // if all scores are greater than 0, flash all lights on and off
+       System.out.println("score:" + Score);
+    }
 }
-
-
-
-

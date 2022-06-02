@@ -1,5 +1,4 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
 /**
  * Write a description of class MyWorld here.
  * 
@@ -10,10 +9,8 @@ public class MyWorld extends World
 {
     //initial set values
     //count of how many switches (yeah you will have to set this yourself)
-    int Count = 6;
+    int Count = 6; 
     
-    // moves x a certain distance as specified for all squares
-    int C;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -22,12 +19,15 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); 
+        
+        //adds a select.class
         addObject(new Select(), 185, 200);
+        
+        //adds switch.class's based on value of the "Count" variable
         for (int i = 1; i <= Count; i++)
         {
-           int x = i * 65 - 10;
-           addObject (new Switch(), x, 200);
+            int x = i * 65 + -10;
+            addObject (new Switch(), x, 200);
         }
-        
-    }
+    }  
 }

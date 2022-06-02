@@ -1,5 +1,4 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
 /**
  * Write a description of class Select here.
  * 
@@ -8,7 +7,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Select extends Actor
 {
+    //movement variable
     int deltaX;
+    
     //also for the number of switches, but just for anti-cheat (Count = 3 to 8)
     int Count = 6;
     /**
@@ -17,37 +18,45 @@ public class Select extends Actor
      */
     public void act() 
     {
-        deltaX = 0;
-        if (Greenfoot.isKeyDown("left"))
-        {
-           deltaX = deltaX - 65;
-        }
-        if (Greenfoot.isKeyDown("right"))
-        {
-           deltaX = deltaX + 65;
-        }
-        
+        controls();
         restrictions();
     }
     
     public void restrictions()
     {
+        //sets location
         setLocation(getX() + deltaX, getY() + 0);
         
+        //loop in which determines where the selector can be (min X (55) and max X (xMax))
         for (int i = 1; i <= Count; i++)
         {
             int xMax = i * 65 + -10;
             if (Count == i)
             { 
-              if (getX() < 55)        
-              {
-                 setLocation (55, 200);
-              }
-              if (getX() > xMax)
-              {
-                 setLocation (xMax, 200);
-              }
+                if (getX() < 55)        
+                {
+                   setLocation (55, 200);
+                }
+                if (getX() > xMax)
+                {
+                   setLocation (xMax, 200);
+                }
             }
         }
     }   
+    
+    public void controls()
+    {
+       //stops movement
+       deltaX = 0;
+       //basic left/right movement
+       if (Greenfoot.isKeyDown("left"))
+       {
+          deltaX = deltaX - 65;
+       }
+       if (Greenfoot.isKeyDown("right"))
+       {
+          deltaX = deltaX + 65;
+       }
+    }
 }
