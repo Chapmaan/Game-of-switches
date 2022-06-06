@@ -8,12 +8,25 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Switch extends Actor
 {
     //decides if a switch is on or off
-    int OnOff = 0 + Greenfoot.getRandomNumber(2);
     
+    int OnOff = 0 + Greenfoot.getRandomNumber(2);
+
     //tracks score
     int Score;
     
-    //animation stuff
+    //number of switches, set by the player (3-8, 2 is unplayable, 9 takes too much space)
+    int Count = 6;
+    
+    int TotalScore = 6;
+    
+    //counts frames
+    int frameCounter = 0;
+    
+    //interval between animations
+    final int ANIMATION_INTERVAL = 17;
+    
+    int win = 0;
+    
     GreenfootImage imageOff;
     GreenfootImage imageOn;
     {
@@ -49,7 +62,7 @@ public class Switch extends Actor
     public void interact()
     {
        //allows the player to switch the switch's OnOff state by pressing enter based on collision with the select.class object
-        if (Greenfoot.isKeyDown("enter") && isTouching(Select.class))
+       if (Greenfoot.isKeyDown("enter") && isTouching(Select.class))
        {
           OnOff = OnOff + 1;
        }
@@ -64,7 +77,6 @@ public class Switch extends Actor
        //note to self, make all the lights flash on and off when the player turns all lights on
        //possibly add a variable = to how many moves the player has made
        
-        
        //Score = OnOff 
        if (OnOff == 0)
        {
@@ -74,7 +86,36 @@ public class Switch extends Actor
        {
           Score = 1; 
        }
-       // if all scores are greater than 0, flash all lights on and off
+       
+       // allows the player to "win"
+       if (TotalScore == Count)
+       {
+          win++;
+       }
+       
+       //if the player wins, flash lights on and off at intervals
+       if (win > 0)
+       {
+          //flash all lights on and off
+          //resets animation frame to loop
+          if (frameCounter == 2 * ANIMATION_INTERVAL)
+          {
+             //reset to 0
+             frameCounter = 0;
+          }
+          
+          //animates frame by frame in intervals
+          if (frameCounter == 0)
+          {
+             OnOff = 1;
+          }
+          else  if (frameCounter == ANIMATION_INTERVAL)
+          {
+             OnOff = 0;
+          }
+          frameCounter++;
+       }
+       
        System.out.println("score:" + Score);
     }
 }

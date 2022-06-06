@@ -10,7 +10,7 @@ public class Select extends Actor
     //movement variable
     int deltaX;
     
-    //also for the number of switches, but just for anti-cheat (Count = 3 to 8)
+    //also for the number of switches, but just for anti-cheat, set by the player (3-8, 2 is unplayable, and 9 takes too much space
     int Count = 6;
     /**
      * Act - do whatever the Select wants to do. This method is called whenever

@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MyWorld extends World
 {
     //initial set values
-    //count of how many switches (yeah you will have to set this yourself)
+    //count of how many switches, set by the player (3-8, 2 is unplayable, and 9 takes too much space)
     int Count = 6; 
     
     /**
